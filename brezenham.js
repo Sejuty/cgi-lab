@@ -70,11 +70,17 @@ function drawCircle(centerX, centerY, radius, dotSpacing, isDotted) {
   }
 }
 
+const canvas = document.getElementById('myCanvas');
+canvas.addEventListener("click", function(event) {
+    var rect = canvas.getBoundingClientRect();
+    var x = event.clientX - rect.left;
+    var y = event.clientY - rect.top;
 
+    console.log("Clicked at coordinates: (" + x + ", " + y + ")");
+});
 
 function drawPixel(x, y, color) {
-  const canvas = document.getElementById('myCanvas');
-  const ctx = canvas.getContext('2d');
-  ctx.fillStyle = color || 'black';
-  ctx.fillRect(x, y, 1, 1);
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = color || 'black';
+    ctx.fillRect(x, y, 1, 1);
 }
